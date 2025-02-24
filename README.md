@@ -230,7 +230,7 @@ import { fetchPosts } from "./redux/postsSlice";
 const Posts = () => {
   const dispatch = useDispatch();
   const { posts, status } = useSelector((state) => state.posts);
-
+   // name: "posts" → This means the Redux store will store it as state.posts.
   useEffect(() => {
     dispatch(fetchPosts());
   }, [dispatch]);
