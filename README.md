@@ -176,6 +176,8 @@ We use `createAsyncThunk()` to fetch data asynchronously.
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 // Fetch posts from API
+//Redux uses action types to track what is happening in the app.
+//The format "sliceName/actionName" helps uniquely identify different actions.
 export const fetchPosts = createAsyncThunk("posts/fetchPosts", async () => {
   const response = await fetch("https://jsonplaceholder.typicode.com/posts");
   return response.json();
