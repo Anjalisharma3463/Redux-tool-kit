@@ -67,11 +67,20 @@ export const { increment, decrement, reset } = counterSlice.actions;
 export default counterSlice.reducer;
 ```
 
+What is extraReducers Doing Then?
+Normally, Redux reducers handle synchronous actions (e.g., increment, decrement).
+But since API calls are asynchronous, we handle them using extraReducers.
+extraReducers listens for actions automatically created by createAsyncThunk (pending, fulfilled, rejected).
+So, even though reducers: {} is empty, our slice still has reducers inside extraReducers! That’s why we can export postsSlice.reducer even though reducers: {} is empty.
+
+Why Do We Export postsSlice.reducer?
+Even though we didn’t write reducers manually, createSlice automatically generates a reducer function that includes the logic from extraReducers.
+ 
 🔹 **Key Points:**
 - `createSlice()` automatically generates actions and reducers.
 - We **mutate state directly**, but Redux Toolkit **converts it** internally to an immutable state using `immer`.
 - **Actions are exported** (`increment, decrement, reset`) to be used in components.
-
+//--------->// reducers are functions that modify the state when an action is dispatched.
 ---
 
 ### **3️⃣ Create Redux Store**
